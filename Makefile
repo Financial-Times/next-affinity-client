@@ -1,11 +1,6 @@
 include n.Makefile
 
 unit-test:
-	@echo "Testing…"
-	karma start --single-run
+	mocha --recursive --reporter spec test
 
 test: verify unit-test
-
-test-dev:
-	@echo "Testing…"
-	karma start --browsers Chrome
