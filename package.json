@@ -1,0 +1,38 @@
+{
+  "name": "ft-next-affinity-client",
+  "version": "0.0.0",
+  "description": "Client to query the next-affinity-api.",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": "^6.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Financial-Times/next-affinity-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Financial-Times/next-affinity-client/issues"
+  },
+  "homepage": "https://github.com/Financial-Times/next-affinity-client#readme",
+  "devDependencies": {
+    "@financial-times/n-heroku-tools": "^6.14.10",
+		"babelify": "^6.1.3",
+    "bower": "^1.7.9",
+    "browserify": "^11.0.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "fetch-mock": "^5.5.0",
+		"isomorphic-fetch": "^2.0.0",
+    "lintspaces-cli": "^0.4.0",
+    "mocha": "^3.1.2",
+    "npm-prepublish": "^1.2.1"
+  },
+  "dependencies": {
+    "@financial-times/n-express": "^17.16.2",
+    "@financial-times/n-logger": "^5.4.6",
+    "fetchres": "^1.7.2"
+  }
+}

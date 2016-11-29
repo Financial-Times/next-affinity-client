@@ -1,0 +1,28 @@
+{
+  "name": "next-affinity-client",
+  "homepage": "https://github.com/financial-times/next-affinity-client",
+  "description": "Client to query the next-affinity-api.",
+	"main": "affinity-bower.js",
+	"private": true,
+	"ignore": [
+    "bower_components",
+    "node_modules",
+    "test",
+    ".editorconfig",
+    ".eslintrc.js",
+    ".gitignore",
+    ".npmignore",
+    "circle.yml",
+    "Makefile",
+    "n.Makefile",
+    "package.json"
+  ],
+	"dependencies": {
+    "next-session-client": "^2.0.0",
+    "fetchres": "^1.4.1",
+    "core.js": "^1.2.5"
+  },
+  "devDependencies": {
+    "isomorphic-fetch": "^2.0.0"
+  }
+}
