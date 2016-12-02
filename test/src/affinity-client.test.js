@@ -31,12 +31,6 @@ describe('Affinity API Client - clientside', () => {
 		expect(fetchMock.lastUrl()).to.equal('/api/foo?foo=bar')
 	});
 
-	// getJson (endpoint, options) {
-	// 	return fetch(this.apiRoot + endpoint + this.makeQueryString(options))
-	// 		.then(fetchres.json)
-	// 		.then(data => { return data; });
-	// }
-
 	it('has a method to get popular articles', () => {
 		instance.popular();
 		expect(instance.getJson.args[0][0]).to.equal('/popular');
