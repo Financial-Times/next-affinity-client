@@ -1,7 +1,7 @@
 'use strict';
 const fetchres = require('fetchres');
 /**
-* constructs a path to send to our proxy
+* constructs a path to send to our proxy, rather than directly calling '/__affinity/article/id' etc.
 * const affinityClient = new AffinityClient(apiroot);
 * Usage:
 * affinityClient.popular({query: {count: 5}});
@@ -17,7 +17,7 @@ class AffinityClient {
 	}
 
 	getJson (endpoint, options) {
-		return fetch(this.apiRoot + endpoint + this.getQueryString(options))
+		return fetch(this.apiRoot + endpoint + this.makeQueryString(options))
 			.then(fetchres.json)
 			.then(data => { return data; });
 	}
@@ -37,25 +37,25 @@ class AffinityClient {
 		}
 	}
 
-		/**
-		* @param {Object} options checks for a query object, serializes it if there is one
-		* @returns {String} query string including starting '?'
-		**/
-		getQueryString (options) {
-			return (options && options.query && options.query.constuctor === Object) ? `?${this.serialize(options.query)}` : '';
-		}
+	/**
+	* @param {Object} options checks for a query object, serializes it if there is one
+	* @returns {String} query string including starting '?'
+	**/
+	makeQueryString (options) {
+		return (options && options.query && options.query.constructor === Object) ? `?${this.serialize(options.query)}` : '';
+	}
 
-		/**
-		* @param {Object} queryObject query expressed as an object
-		* @returns {String} uri encoded string of these objects joined with ampersands
-		**/
-		serialize (queryObject) {
-			const queryArray = Object.keys(queryObject).map(key => {
-				return `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
-			});
-			const querystring = queryArray.join('&');
-			return querystring;
-		}
+	/**
+	* @param {Object} queryObject query expressed as an object
+	* @returns {String} uri encoded string of these objects joined with ampersands
+	**/
+	serialize (queryObject) {
+		const queryArray = Object.keys(queryObject).map(key => {
+			return `${encodeURIComponent(key)}=${encodeURIComponent(queryObject[key])}`;
+		});
+		const querystring = queryArray.join('&');
+		return querystring;
+	}
 }
 
 export default AffinityClient
