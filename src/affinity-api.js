@@ -6,7 +6,7 @@ const url = require('url');
 // Enforce a whitelist of acceptable params
 const validSort = ['pop', 'rel', 'date'];
 const validType = ['popular', 'article'];
-const validIdRegex = /^[\w\-\d]+$/gi;
+const validIdRegex = /^[\w\-\d]+$/i;
 /**
 * @param {Object} opts apiroot - url for the API, headers - headers for the call (requires X-API-KEY)
 * @method popular Get most popular topics
@@ -54,19 +54,20 @@ class AffinityApi {
 	buildRequest (options) {
 		if (options && options.params && validType.indexOf(options.params.type) !== -1) {
 			const params = options.params;
-			let pathname = `/${params.type}/`;
+			let paths = [params.type];
+
 			if (params.id && validIdRegex.test(params.id)) {
-				pathname += params.id;
+				paths.push(params.id);
 			}
 			if (params.uid && validIdRegex.test(params.uid)) {
-				pathname += `/user/${params.uid}`;
+				paths.push('user', params.uid);
 			}
 			const urlObject = {
-				pathname,
+				pathname: paths.join('/'),
 				query: options.query
 			}
 			const endpoint = url.format(urlObject);
-			return fetch(this.apiRoot + endpoint, {
+			return fetch(`${this.apiRoot}/${endpoint}`, {
 				headers: this.headers
 			})
 			.then(fetchres.json)
