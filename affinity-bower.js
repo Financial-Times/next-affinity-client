@@ -3,5 +3,5 @@
 import AffinityClient from './src/affinity-client.js';
 
 export default new AffinityClient({
-	apiRoot: '/_affinity',
+	apiRoot: '/affinity',
 });
