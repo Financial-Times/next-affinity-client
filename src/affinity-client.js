@@ -6,7 +6,8 @@ const fetchres = require('fetchres');
 * Usage:
 * affinityClient.popular({query: {count: 5}});
 * affinityClient.article({id:'someid'});
-* affinityClient.article({id:'someid', uId:{'userid'});
+* affinityClient.contextual({id:'someid'});
+* affinityClient.behavioural({id:'someid'});
 **/
 class AffinityClient {
 	constructor (options) {
@@ -27,12 +28,23 @@ class AffinityClient {
 		return this.getJson(endpoint, options);
 	}
 
+	contextual (options) {
+		if (options && options.id) {
+			let endpoint = `/contextual/${options.id}`;
+			return this.getJson(endpoint, options);
+		}
+	}
+
+	behavioural (options) {
+		if (options && options.id) {
+			let endpoint = `/behavioural/${options.id}`;
+			return this.getJson(endpoint, options);
+		}
+	}
+
 	article (options) {
 		if (options && options.id) {
 			let endpoint = `/article/${options.id}`;
-			if (options.uid) {
-				endpoint += `/user/${options.uid}`
-			}
 			return this.getJson(endpoint, options);
 		}
 	}

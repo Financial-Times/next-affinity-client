@@ -10,11 +10,13 @@ const validIdRegex = /^[\w\-\d]+$/i;
 /**
 * @param {Object} opts apiroot - url for the API, headers - headers for the call (requires X-API-KEY)
 * @method popular Get most popular topics
+* @method buildRequest Create a url to call the api with
 * NB: be careful not to render frequently-changing or individualised content on the server-side for pages that cache
 * Usage:
 * const affinityApi = new AffinityApi({apiroot, headers})
 * affinityApi.popular({count: 5});
-* affinnityApi.buildRequest({type: 'article', id: articleId, uid: userId});
+* affinnityApi.buildRequest({type: 'article', id: articleId});
+* affinnityApi.buildRequest({type: 'behavioural', id: articleId});
 **/
 class AffinityApi {
 	constructor (opts) {
@@ -48,7 +50,7 @@ class AffinityApi {
 
 	/**
 	* @param {Object} options
-	* params - required, should contain at least type, optionally id and uid
+	* params - required, should contain at least type, optionally id
 	* query - optional, object that represents a querystring for call to API
 	**/
 	buildRequest (options) {
@@ -58,9 +60,6 @@ class AffinityApi {
 
 			if (params.id && validIdRegex.test(params.id)) {
 				paths.push(params.id);
-			}
-			if (params.uid && validIdRegex.test(params.uid)) {
-				paths.push('user', params.uid);
 			}
 			const urlObject = {
 				pathname: paths.join('/'),
