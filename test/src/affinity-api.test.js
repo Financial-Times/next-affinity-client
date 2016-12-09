@@ -68,23 +68,11 @@ describe('Affinity API Client - serverside', () => {
 			expect(fetchMock.lastUrl()).to.equal('api/article');
 		});
 
-		it('builds an endpoint call with the type, id and user id', () => {
+		it('builds an endpoint call with the type and id', () => {
 			instance.buildRequest({
 				params: {
 					type: 'article',
-					id: '123',
-					uid: 'abc'
-				}
-			});
-			expect(fetchMock.lastUrl()).to.equal('api/article/123/user/abc');
-		});
-
-		it('won`t use an invalid uid', () => {
-			instance.buildRequest({
-				params: {
-					type: 'article',
-					id: '123',
-					uid: '%'
+					id: '123'
 				}
 			});
 			expect(fetchMock.lastUrl()).to.equal('api/article/123');

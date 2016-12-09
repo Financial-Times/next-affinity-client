@@ -43,12 +43,18 @@ describe('Affinity API Client - clientside', () => {
 		expect(instance.getJson.args[0][0]).to.equal('/article/123')
 	});
 
-	it('has a method to get articles with a user id passed through', () => {
-		instance.article({
-			id: 123,
-			uid: 'abc'
+	it('has a method to get contextual articles', () => {
+		instance.contextual({
+			id: 123
 		});
-		expect(instance.getJson.args[0][0]).to.equal('/article/123/user/abc')
+		expect(instance.getJson.args[0][0]).to.equal('/contextual/123')
+	});
+
+	it('has a method to get behavioural articles', () => {
+		instance.behavioural({
+			id: 123
+		});
+		expect(instance.getJson.args[0][0]).to.equal('/behavioural/123')
 	});
 
 	it('extracts the querystring', () => {
