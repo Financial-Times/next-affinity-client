@@ -5,7 +5,7 @@ const url = require('url');
 
 // Enforce a whitelist of acceptable params
 const validSort = ['pop', 'rel', 'date'];
-const validType = ['popular', 'article'];
+const validType = ['popular', 'article', 'contextual', 'behavioural'];
 const validIdRegex = /^[\w\-\d]+$/i;
 /**
 * @param {Object} opts apiroot - url for the API, headers - headers for the call (requires X-API-KEY)
