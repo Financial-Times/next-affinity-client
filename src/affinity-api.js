@@ -56,8 +56,11 @@ class AffinityApi {
 	buildRequest (options) {
 		if (options && options.params && validType.indexOf(options.params.type) !== -1) {
 			const params = options.params;
+			const headers = this.headers;
 			let paths = [params.type];
-
+			if (options.session) {
+				headers.FTSession = options.session;
+			}
 			if (params.id && validIdRegex.test(params.id)) {
 				paths.push(params.id);
 			}
@@ -67,7 +70,7 @@ class AffinityApi {
 			}
 			const endpoint = url.format(urlObject);
 			return fetch(`${this.apiRoot}/${endpoint}`, {
-				headers: this.headers
+				headers
 			})
 			.then(fetchres.json)
 			.catch(error => {
