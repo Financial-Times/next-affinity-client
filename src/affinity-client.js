@@ -18,9 +18,14 @@ class AffinityClient {
 	}
 
 	getJson (endpoint, options) {
-		return fetch(this.apiRoot + endpoint + this.makeQueryString(options))
+		return fetch(this.apiRoot + endpoint + this.makeQueryString(options), {
+			credentials: 'include'
+		})
 			.then(fetchres.json)
-			.then(data => { return data; });
+			.then(data => { return data; })
+			.catch((err) => {
+				throw err
+			});
 	}
 
 	popular (options) {
