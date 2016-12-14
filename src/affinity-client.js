@@ -22,7 +22,6 @@ class AffinityClient {
 			credentials: 'include'
 		})
 			.then(fetchres.json)
-			.then(data => { return data; })
 			.catch((err) => {
 				throw err
 			});
@@ -34,24 +33,18 @@ class AffinityClient {
 	}
 
 	contextual (options) {
-		if (options && options.id) {
-			let endpoint = `/contextual/${options.id}`;
-			return this.getJson(endpoint, options);
-		}
+		let endpoint = `/contextual/${options.id}`;
+		return this.getJson(endpoint, options);
 	}
 
 	behavioural (options) {
-		if (options && options.id) {
-			let endpoint = `/behavioural/${options.id}`;
-			return this.getJson(endpoint, options);
-		}
+		let endpoint = `/behavioural/${options.id}`;
+		return this.getJson(endpoint, options);
 	}
 
 	article (options) {
-		if (options && options.id) {
-			let endpoint = `/article/${options.id}`;
-			return this.getJson(endpoint, options);
-		}
+		let endpoint = `/article/${options.id}`;
+		return this.getJson(endpoint, options);
 	}
 
 	/**
