@@ -74,7 +74,7 @@ class AffinityApi {
 			})
 			.then(fetchres.json)
 			.catch(error => {
-				logger.warn('Error fetching most popular articles via client', { event: 'AFFINITY_FETCH_MOST_POPULAR_CLIENT_ERROR', msg: error });
+				logger.warn(`Error fetching articles for ${options.params.type} via client`, { event: 'AFFINITY_FETCH_CLIENT_ERROR', msg: error });
 			});
 		}
 		else {
