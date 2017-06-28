@@ -6,6 +6,13 @@
   "scripts": {
     "test": "make test"
   },
+  "config": {
+    "pre-git": {
+      "pre-commit": [
+        "node_modules/.bin/secret-squirrel"
+      ]
+    }
+  },
   "engines": {
     "node": ">=6.9.0"
   },
