@@ -6,18 +6,9 @@
   "scripts": {
     "test": "make test",
     "precommit": "node_modules/.bin/secret-squirrel",
-    "prepush": "make verify -j3"
+    "prepush": "make test"
   },
-  "config": {
-    "pre-git": {
-      "pre-commit": [
-        "node_modules/.bin/secret-squirrel"
-      ],
-      "pre-push": [
-        "make test"
-      ]
-    }
-  },
+  "config": {},
   "engines": {
     "node": ">=6.9.0"
   },
