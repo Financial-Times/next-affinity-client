@@ -19,7 +19,7 @@ describe('Affinity API Client - clientside', () => {
 	});
 
 	it('throws if there is no apiroot', () => {
-		expect(function () { new AffinityClient({}) }).to.throw('Affinity client must be constructed with an api root');
+		expect(function () { new AffinityClient({}); }).to.throw('Affinity client must be constructed with an api root');
 	});
 
 	it('returns an instance with the api root', () => {
@@ -28,7 +28,7 @@ describe('Affinity API Client - clientside', () => {
 
 	it('gets JSON', () => {
 		instance.getJson('/foo', {query: { 'foo': 'bar' }});
-		expect(fetchMock.lastUrl()).to.equal('/api/foo?foo=bar')
+		expect(fetchMock.lastUrl()).to.equal('/api/foo?foo=bar');
 	});
 
 	it('has a method to get popular articles', () => {
@@ -40,21 +40,21 @@ describe('Affinity API Client - clientside', () => {
 		instance.article({
 			id: 123
 		});
-		expect(instance.getJson.args[0][0]).to.equal('/article/123')
+		expect(instance.getJson.args[0][0]).to.equal('/article/123');
 	});
 
 	it('has a method to get contextual articles', () => {
 		instance.contextual({
 			id: 123
 		});
-		expect(instance.getJson.args[0][0]).to.equal('/contextual/123')
+		expect(instance.getJson.args[0][0]).to.equal('/contextual/123');
 	});
 
 	it('has a method to get behavioural articles', () => {
 		instance.behavioural({
 			id: 123
 		});
-		expect(instance.getJson.args[0][0]).to.equal('/behavioural/123')
+		expect(instance.getJson.args[0][0]).to.equal('/behavioural/123');
 	});
 
 	it('extracts the querystring', () => {
@@ -62,7 +62,7 @@ describe('Affinity API Client - clientside', () => {
 			query: {
 				'foo': 'bar'
 			}
-		}
+		};
 		const result = instance.makeQueryString(options);
 		expect(result).to.equal('?foo=bar');
 	});

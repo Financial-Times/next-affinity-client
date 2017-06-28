@@ -67,7 +67,7 @@ class AffinityApi {
 			const urlObject = {
 				pathname: paths.join('/'),
 				query: options.query
-			}
+			};
 			const endpoint = url.format(urlObject);
 			return fetch(`${this.apiRoot}/${endpoint}`, {
 				headers

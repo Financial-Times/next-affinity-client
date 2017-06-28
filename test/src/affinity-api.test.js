@@ -6,7 +6,7 @@ const AffinityApi = require('../../src/affinity-api');
 
 describe('Affinity API Client - serverside', () => {
 	it('throws an error if not given an api root', () => {
-		expect(function (){ new AffinityApi }).to.throw(Error);
+		expect(function (){ new AffinityApi(); }).to.throw(Error);
 	});
 	it('returns an instance with the api root and headers', () => {
 		const instance = new AffinityApi({
