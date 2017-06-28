@@ -36,7 +36,6 @@
     "lintspaces-cli": "^0.4.0",
     "mocha": "^3.1.2",
     "npm-prepublish": "^1.2.1",
-    "pre-git": "^3.15.0",
     "sinon": "^1.17.6"
   },
   "dependencies": {
