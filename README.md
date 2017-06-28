@@ -1,5 +1,6 @@
 # Next-Affinity-Client
 
+
 This client provides client-side and server-side interfaces for calling the Affinity API
 
 ## Usage
