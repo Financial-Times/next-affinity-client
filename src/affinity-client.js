@@ -23,7 +23,7 @@ class AffinityClient {
 		})
 			.then(fetchres.json)
 			.catch((err) => {
-				throw err
+				throw err;
 			});
 	}
 
@@ -68,4 +68,4 @@ class AffinityClient {
 	}
 }
 
-export default AffinityClient
+export default AffinityClient;
